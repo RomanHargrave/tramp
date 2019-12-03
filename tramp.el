@@ -2332,7 +2332,7 @@ If Emacs is compiled --with-threads, the body is protected by a mutex."
 	    (tramp-compat-thread-yield)
 	    ;; The mutex allows concurrent run of operations.  It
 	    ;; guarantees, that the threads are not mixed.
-	    (tramp-compat-with-mutex (tramp-get-mutex v)
+	    (with-mutex (tramp-get-mutex v)
 	      (let ((current-connection tramp-current-connection)
 		    (foreign
 		     (tramp-find-foreign-file-name-handler filename operation))
